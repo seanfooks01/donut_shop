@@ -5,10 +5,14 @@ var StoreLocation = function(name, hours, avgDonutsPerCust, minCust, maxCust){
   this.avgDonutsPerCust = avgDonutsPerCust;
   this.minCust = minCust;
   this.maxCust = maxCust;
+
   this.donutsPerHour = [];
+  this.totalDonuts = 0;
   for(var i = 0; i < this.hours.length; i++){
     var custPerHour = this.minCust + Math.floor(Math.random() * (this.maxCust - this.minCust));
-    this.donutsPerHour[i] = custPerHour * this.avgDonutsPerCust;
+    var donutsPerHour = custPerHour * this.avgDonutsPerCust;
+    this.donutsPerHour[i] = donutsPerHour;
+    this.totalDonuts += donutsPerHour;
   }
 }
 
@@ -28,6 +32,9 @@ for(var i = 0; i < hours.length; i++){
   hoursOperation.appendChild(tableHead);
   tableHead.textContent = hours[i];
 }
+  var totalHead = document.createElement("th");
+  hoursOperation.appendChild(totalHead);
+  totalHead.textContent = "TOTAL";
 
 var locationsTable = document.getElementById("locations_table");
 for(var i = 0; i < locations.length; i++){
@@ -41,6 +48,9 @@ for(var i = 0; i < locations.length; i++){
     row.appendChild(donutsColumn);
     donutsColumn.textContent = locations[i].donutsPerHour[j];
   }
+var locationTotal = document.createElement("td");
+row.appendChild(locationTotal);
+locationTotal.textContent = locations[i].totalDonuts;
 }
 
 

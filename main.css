@@ -1,0 +1,10 @@
+thead {
+font-size: 40px;
+}
+td {
+  border: 1px solid black;
+}
+tr.even {
+  background-color: #efefef;
+}
+

@@ -29,6 +29,17 @@ for(var i = 0; i < hours.length; i++){
   tableHead.textContent = hours[i];
 }
 
+var locationsTable = document.getElementById("locations_table");
+for(var i = 0; i < locations.length; i++){
+  var row = document.createElement("tr");
+  locationsTable.appendChild(row);
+  var column = document.createElement("td");
+  row.appendChild(column);
+  column.textContent = locations[i].name;
+}
+
+var locationName = document.createElement("td");
+
 
 }
 

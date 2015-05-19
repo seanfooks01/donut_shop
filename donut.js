@@ -33,12 +33,16 @@ var locationsTable = document.getElementById("locations_table");
 for(var i = 0; i < locations.length; i++){
   var row = document.createElement("tr");
   locationsTable.appendChild(row);
-  var column = document.createElement("td");
-  row.appendChild(column);
-  column.textContent = locations[i].name;
+  var locationName = document.createElement("td");
+  row.appendChild(locationName);
+  locationName.textContent = locations[i].name;
+  for(var j = 0; j < hours.length; j++){
+    var donutsColumn = document.createElement("td");
+    row.appendChild(donutsColumn);
+    donutsColumn.textContent = locations[i].donutsPerHour[j];
+  }
 }
 
-var locationName = document.createElement("td");
 
 
 }

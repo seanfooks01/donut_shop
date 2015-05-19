@@ -27,14 +27,20 @@ var bellevue = new StoreLocation("Bellevue", hours, 4, 15, 40);
 var locations=[downtown, caphill, bothell, auburn, bellevue];
 
 var hoursOperation = document.getElementById("hours_operation");
+
+var locationsHead = document.createElement("th");
+hoursOperation.appendChild(locationsHead);
+locationsHead.textContent = "LOCATION";
+
 for(var i = 0; i < hours.length; i++){
   var tableHead = document.createElement("th");
   hoursOperation.appendChild(tableHead);
   tableHead.textContent = hours[i];
 }
-  var totalHead = document.createElement("th");
-  hoursOperation.appendChild(totalHead);
-  totalHead.textContent = "TOTAL";
+
+var totalHead = document.createElement("th");
+hoursOperation.appendChild(totalHead);
+totalHead.textContent = "TOTAL";
 
 var locationsTable = document.getElementById("locations_table");
 for(var i = 0; i < locations.length; i++){

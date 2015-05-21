@@ -1,4 +1,6 @@
 window.onload = function(){
+    render();
+}
   var StoreLocation = function(name, hours, avgDonutsPerCust, minCust, maxCust){
     this.name = name;
     this.hours = hours;
@@ -26,47 +28,52 @@ window.onload = function(){
 
   var locations=[downtown, caphill, bothell, auburn, bellevue];
 
-  var hoursOperation = document.getElementById("hours_operation");
+  var render = function(){
+    var locationsTable = document.getElementById("locations_table");
+    locationsTable.innerHTML = "";
+    var hoursOperation = document.createElement("tr");
+    locationsTable.appendChild(hoursOperation);
 
-  var locationsHead = document.createElement("th");
-  hoursOperation.appendChild(locationsHead);
-  locationsHead.textContent = "LOCATION";
 
-  for(var i = 0; i < hours.length; i++){
-    var tableHead = document.createElement("th");
-    hoursOperation.appendChild(tableHead);
-    tableHead.textContent = hours[i];
-  }
+    var locationsHead = document.createElement("th");
+    hoursOperation.appendChild(locationsHead);
+    locationsHead.textContent = "LOCATION";
 
-  var totalHead = document.createElement("th");
-  hoursOperation.appendChild(totalHead);
-  totalHead.textContent = "TOTAL";
-
-  var locationsTable = document.getElementById("locations_table");
-  for(var i = 0; i < locations.length; i++){
-    var row = document.createElement("tr");
-    locationsTable.appendChild(row);
-    var locationName = document.createElement("td");
-    row.appendChild(locationName);
-    locationName.textContent = locations[i].name;
-    for(var j = 0; j < hours.length; j++){
-      var donutsColumn = document.createElement("td");
-      row.appendChild(donutsColumn);
-      donutsColumn.textContent = locations[i].donutsPerHour[j];
+    for(var i = 0; i < hours.length; i++){
+      var tableHead = document.createElement("th");
+      hoursOperation.appendChild(tableHead);
+      tableHead.textContent = hours[i];
     }
-  var locationTotal = document.createElement("td");
-  row.appendChild(locationTotal);
-  locationTotal.textContent = locations[i].totalDonuts;
+
+    var totalHead = document.createElement("th");
+    hoursOperation.appendChild(totalHead);
+    totalHead.textContent = "TOTAL";
+
+    for(var i = 0; i < locations.length; i++){
+      var row = document.createElement("tr");
+      locationsTable.appendChild(row);
+      var locationName = document.createElement("td");
+      row.appendChild(locationName);
+      locationName.textContent = locations[i].name;
+      for(var j = 0; j < hours.length; j++){
+        var donutsColumn = document.createElement("td");
+        row.appendChild(donutsColumn);
+        donutsColumn.textContent = locations[i].donutsPerHour[j];
+      }
+    var locationTotal = document.createElement("td");
+    row.appendChild(locationTotal);
+    locationTotal.textContent = locations[i].totalDonuts;
+    }
   }
 
 
+  var save = function(){
+    var newName = document.getElementById("new_location_name");
+    var newDonutCust = document.getElementById("new_per_cust");
+    var newMax = document.getElementById("new_max_hour");
+    var newMin = document.getElementById("new_min_hour");
 
-}
-
-
-
-
-
-
-
-
+    var newLocation = new StoreLocation(newName.value, hours, Number(newDonutCust.value), Number(newMax.value), Number(newMin.value));
+    locations.push(newLocation);
+    render();
+  }

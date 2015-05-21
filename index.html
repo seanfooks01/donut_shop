@@ -1,4 +1,4 @@
-<!Doctype= html>
+<!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="main.css">
@@ -12,6 +12,38 @@
       </tr>
     </tbody>
   </table>
+
+  <table>
+    <tr>
+      <th>
+        <label for="new_location_name">New Location Name</label>
+      </th>
+      <th>
+        <label for="new_max_hour">Maximum Customers Per Hour</label>
+      </th>
+      <th>
+        <label for="new_min_hour">Minimum Customers Per Hour</label>
+      </th>
+      <th>
+        <label for="new_per_cust">Average Donuts Per Customer</label>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <input id="new_location_name" type="text"/>
+      </td>
+      <td>
+        <input id="new_max_hour" type"text"/>
+      </td>
+      <td>
+        <input id="new_min_hour" type"text"/>
+      </td>
+      <td>
+        <input id="new_per_cust" type"text"/>
+      </td>
+    </tr>
+  </table>
+  <button onclick="save()">SUBMIT</button>
 
 </body>
 </html>
